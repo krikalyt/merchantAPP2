@@ -1,6 +1,7 @@
 package com.example.krika.merchantapp30;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -14,9 +15,11 @@ public class recyclerviewAdapter extends RecyclerView.Adapter<recyclerviewAdapte
 
     private  String[] data;
     Typeface tf2;
+    Context context;
 
-    public recyclerviewAdapter(String []data){
+    public recyclerviewAdapter(String []data, Context context){
         this.data = data;
+        this.context = context;
     }
     @NonNull
     @Override
@@ -28,14 +31,19 @@ public class recyclerviewAdapter extends RecyclerView.Adapter<recyclerviewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull recyclerviewViewholder holder, final int position) {
-        String title = data[position];
+        final String title = data[position];
         final Context context = holder.view.getContext();
         holder.textView.setText(title +" ButterRoti with  Paneer Pizza");
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "you clicked on "+(position + 1),
-                        Toast.LENGTH_SHORT).show();
+
+                Class destination = finalactivity.class;
+                Intent intent = new Intent(context,destination);
+                intent.putExtra("info",title+" ButterRoti with  Paneer Pizza");
+                intent.putExtra("quantity", "Quantity: 1");
+                context.startActivity(intent);
+
             }
         });
     }
