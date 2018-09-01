@@ -37,13 +37,11 @@ public class recyclerviewAdapter extends RecyclerView.Adapter<recyclerviewAdapte
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Class destination = finalactivity.class;
                 Intent intent = new Intent(context,destination);
                 intent.putExtra("info",title+" ButterRoti with  Paneer Pizza");
                 intent.putExtra("quantity", "Quantity: 1");
                 context.startActivity(intent);
-
             }
         });
     }
@@ -52,16 +50,16 @@ public class recyclerviewAdapter extends RecyclerView.Adapter<recyclerviewAdapte
     public int getItemCount() {
         return data.length;
     }
-
     public class recyclerviewViewholder extends  RecyclerView.ViewHolder {
-
 
         TextView textView;
         View view;
         public recyclerviewViewholder(View itemView) {
+
             super(itemView);
             view =  itemView.findViewById(R.id.list_view_main);
             textView = itemView.findViewById(R.id.fooddescription);
+
         }
     }
 }
